@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <div class="d-flex justify-content-left align-items-end"><h2 class="m-0 p-0"><%= @restaurant.name %></h2><span>&nbsp;&nbsp;<%= @restaurant.category %> restaurant</span></div>
+    <div class="d-flex justify-content-left align-items-end"><span>avg. rating: &nbsp;</span><h3 class="m-0 p-0"><%= @avg_rating %></h3></div>
+  </div>
+  <br>
+  <h5 class="mb-5"><strong>Address:</strong> <%= @restaurant.address %></h5>
+  <p><%= @restaurant.phone_number unless @restaurant.phone_number.nil? %><p>
+  <ul id="review-list">
+    <% @restaurant.reviews.each do |rev| %>
+    <li class="m-3">
+      <% rev.rating.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <br>
+      <span><%= rev.content %></span>
+    </li>
+    <% end %>
+  </ul>
+  <%= link_to "Add review", new_restaurant_review_path({ restaurant_id: @restaurant.id }),  class: "d-block" %>
+  <%= link_to "Back", restaurants_path, class: "d-block" %>
+</div>

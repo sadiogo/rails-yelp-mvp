@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="d-flex justify-content-between p-2">
+    <h2>Restaurants</h2>
+    <%= link_to new_restaurant_path, class: "btn btn-success py-2 px-3" do %>
+      <i class="fas fa-plus"></i><span> New Restaurant</span>
+    <% end %>
+  </div>
+  
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Category</th>
+    </tr>
+    <% @restaurants.each do |r| %>
+      <tr>
+        <td><%= r.id %></td>
+        <td><%= link_to r.name, restaurant_path(r.id) %></td>
+        <td><%= r.category %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
